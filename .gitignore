@@ -1,0 +1,36 @@
+# Julia
+.julia/
+*.ji
+Manifest.toml
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Editors and OS files
+.vscode/
+.idea/
+.DS_Store
+__MACOSX/
+
+# Local environments
+.CondaPkg/
+
+# User data
+# Keep the small synthetic examples in data/examples/, ignore everything else.
+data/*
+!data/README.md
+!data/examples/
+!data/examples/**
+
+# Generated outputs
+figures/*
+!figures/.gitkeep
+results/*
+!results/.gitkeep
+notebooks/figs/*
+!notebooks/figs/.gitkeep
+output/
+
+# Temporary files
+*.tmp
+*.log

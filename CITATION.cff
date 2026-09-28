@@ -1,0 +1,12 @@
+cff-version: 1.0.0
+message: "If you use this software in academic work, please cite this repository."
+title: "Maxplus_eigenvectors"
+type: software
+authors:
+  - family-names: "Reyner Fuentes"
+    given-names: "Emma"
+  - family-names: "Valverde Albacete"
+    given-names: "Francisco J."
+version: 0.0.0
+date-released: 2026-09-28
+license: MIT

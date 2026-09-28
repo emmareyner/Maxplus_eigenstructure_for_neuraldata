@@ -1,0 +1,3 @@
+*.ipynb linguist-language=Julia
+*.jl text eol=lf
+*.md text eol=lf
