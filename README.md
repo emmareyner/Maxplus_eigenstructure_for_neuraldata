@@ -76,11 +76,11 @@ This is the **thesis reproducibility notebook**. It reconstructs the five networ
 - neuropeptidergic signalling;
 - functional signal propagation.
 
-It explicitly separates the original numeric adjacency matrix `C` from its max-plus representation `A = to_maxplus(C)`, computes and validates the complete eigensystems, reports the SCC organisation and critical classes, reproduces the gap-junction sensitivity control, exports compact result tables, and finishes with automated checks for the headline thesis results.
+It explicitly separates the original numeric adjacency matrix `C` from its max-plus representation `A = to_maxplus(C)`, computes and validates the complete eigensystems, reports the SCC organisation and critical classes, reproduces the gap-junction sensitivity control, exports compact result tables, and finishes with automated checks for the main results reported in the thesis.
 
 ### Data required for the *C. elegans* notebook
 
-The biological datasets are intentionally not committed. Place them locally as:
+To reproduce the thesis results, the notebook expects the following files:
 
 ```text
 data/
@@ -92,9 +92,20 @@ data/
         └── functional_connectivity_all.csv
 ```
 
-Everything below `data/` except the synthetic examples is ignored by Git, so copying these files into the repository will not accidentally publish them.
+These files correspond to the specific connectome releases used in the thesis:
 
-`src/celegans_helpers.jl` contains the dataset-specific loading and harmonisation used by this notebook. In particular, it aligns the structural layers to the common 302-neuron ordering and converts their source/target orientation to the package convention `A[target, source]`.
+- **Chemical synapses and electrical gap junctions.** The anatomical connectomes are taken from Cook et al. (2019), *Whole-animal connectomes of both Caenorhabditis elegans sexes*, Nature 571, 63–71, DOI: `10.1038/s41586-019-1352-7`. The notebook uses the corrected July 2020 release of Supplementary Information 5 distributed through WormWiring: `SI 5 Connectome adjacency matrices, corrected July 2020.xlsx`.
+
+- **Monoaminergic signalling.** The monoaminergic network is based on Bentley et al. (2016), *The Multilayer Connectome of Caenorhabditis elegans*, PLOS Computational Biology 12(12): e1005283, DOI: `10.1371/journal.pcbi.1005283`. The file `08062023_monoamine_connectome.csv` is the harmonised version used in the thesis analysis.
+
+- **Neuropeptidergic signalling.** The neuropeptidergic network is taken from Ripoll-Sánchez et al. (2023), *The neuropeptidergic connectome of C. elegans*, Neuron 111, 3570–3589.e5. The thesis uses the short-range model distributed as `01022024_neuropeptide_connectome_short_range_model.csv`, in which connections are restricted according to anatomical proximity of neuronal processes.
+
+- **Functional signal propagation.** The functional network is based on Randi et al. (2023), *Neural signal propagation atlas of Caenorhabditis elegans*, Nature 623, 406–414, DOI: `10.1038/s41586-023-06683-4`. The file `functional_connectivity_all.csv` contains the functional signal-propagation matrix used in the thesis analysis, derived from the authors' WormNeuroAtlas data.
+
+`src/celegans_helpers.jl` contains the dataset-specific loading and harmonisation functions used by this notebook. In particular, it aligns the structural layers to a common 302-neuron ordering and converts their source/target orientation to the package convention `A[target, source]`.
+
+The versions listed above are the datasets used to obtain the results reported in the thesis and should therefore be used when **reproducing those results exactly**. They are not, however, a requirement of the max-plus methodology itself. Future releases or updated reconstructions of the *C. elegans* synaptic, electrical, neuromodulatory, or functional connectomes can be analysed using the same workflow, provided that the corresponding input loaders and neuron labelling are adapted when necessary. Results obtained with newer connectome versions should be regarded as new analyses rather than exact reproductions of the thesis results.
+
 
 ## Quick start: adjacency matrix
 
